@@ -1,0 +1,27 @@
+name: Desplegar a Firebase Hosting
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-firebase
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@v4
+
+      - name: Desplegar Hosting y reglas de Firestore
+        run: npx -y firebase-tools@latest deploy --only hosting,firestore --project subastas-autos-a56b8
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
