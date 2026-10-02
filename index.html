@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Subastas de Vehículos en Tiempo Real</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./css/estilos.css" />
+</head>
+<body>
+  <header class="bg-white border-b sticky top-0 z-10 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+      <a href="index.html" class="text-xl font-bold text-blue-700">🚗 Subastas de Vehículos</a>
+      <nav class="flex items-center gap-4">
+        <a href="index.html" class="text-gray-700 hover:text-blue-700 font-medium">Inventario</a>
+        <a id="navPublicar" href="publicar.html" class="hidden text-gray-700 hover:text-blue-700 font-medium">Publicar</a>
+        <a id="navMisPublicaciones" href="mis-publicaciones.html" class="hidden text-gray-700 hover:text-blue-700 font-medium">Mis Publicaciones</a>
+        <a id="navLogin" href="login.html" class="text-gray-700 hover:text-blue-700 font-medium">Iniciar Sesión</a>
+        <a id="navRegistro" href="registro.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Registrarse</a>
+        <div id="userMenu" class="hidden items-center gap-3">
+          <span id="userNombre" class="text-sm text-gray-600"></span>
+          <button id="logoutBtn" class="text-gray-700 hover:text-red-600 text-sm">Cerrar Sesión</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <section class="mb-8 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold">Plataforma de Subastas de Vehículos en Tiempo Real</h1>
+      <p class="text-gray-600 mt-2">Encuentra, registra y ofrece. Pujas actualizadas en vivo, sin recargar la página.</p>
+    </section>
+
+    <section class="bg-white rounded-2xl border p-5 mb-6 shadow-sm">
+      <h2 class="font-semibold mb-4">Filtros avanzados</h2>
+      <div class="mb-4">
+        <input type="text" id="busqueda" placeholder="Buscar por marca, modelo, tipo o motor..."
+          class="w-full border rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <select id="filtroAnio" class="border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"><option value="">Todos los años</option></select>
+        <select id="filtroMarca" class="border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"><option value="">Todas las marcas</option></select>
+        <select id="filtroModelo" class="border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"><option value="">Todos los modelos</option></select>
+        <select id="filtroCombustible" class="border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"><option value="">Todos los combustibles</option></select>
+        <select id="filtroTransmision" class="border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"><option value="">Todas las transmisiones</option></select>
+        <select id="filtroDano" class="border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <option value="">Todos los niveles de daño</option>
+          <option value="verde">Verde — Daño menor</option>
+          <option value="amarillo">Amarillo — Daño medio</option>
+          <option value="rojo">Rojo — Daño severo</option>
+        </select>
+      </div>
+      <div class="mt-4 flex justify-end">
+        <button id="limpiarFiltrosBtn" class="border px-4 py-2 rounded-lg hover:bg-gray-50">Limpiar filtros</button>
+      </div>
+    </section>
+
+    <section id="gridVehiculos" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></section>
+  </main>
+
+  <footer class="border-t bg-white mt-10">
+    <div class="max-w-7xl mx-auto px-4 py-6 text-center text-sm text-gray-500">
+      Plataforma Web de Subastas de Vehículos en Tiempo Real — Caso Copart
+    </div>
+  </footer>
+
+  <script type="module" src="./js/auth.js"></script>
+  <script type="module" src="./js/vehiculos.js"></script>
+</body>
+</html>

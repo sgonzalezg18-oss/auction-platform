@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publicar Vehículo — Subastas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./css/estilos.css" />
+</head>
+<body>
+  <header class="bg-white border-b">
+    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center h-16">
+      <a href="index.html" class="text-xl font-bold text-blue-700">🚗 Subastas de Vehículos</a>
+      <nav class="flex items-center gap-4">
+        <a href="index.html">Inventario</a>
+        <a href="mis-publicaciones.html">Mis Publicaciones</a>
+        <span class="text-gray-400">|</span>
+        <span id="userNombre" class="text-sm text-gray-600"></span>
+        <button id="logoutBtn" class="text-gray-700 hover:text-red-600 text-sm">Cerrar Sesión</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-8">
+    <h1 id="tituloForm" class="text-2xl font-bold">Publicar Vehículo para Subasta</h1>
+    <p class="text-gray-600 mt-1">Todos los campos son obligatorios. Mínimo 5 fotografías. Precio base mínimo Q. 20,000.</p>
+
+    <form id="formPublicar" class="mt-6 space-y-6">
+      <!-- Ficha técnica -->
+      <section class="bg-white rounded-2xl border p-6 shadow-sm">
+        <h2 class="font-semibold text-lg mb-4">1. Ficha Técnica</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label class="block text-sm mb-1">Año *</label>
+            <input type="number" id="anio" min="1900" max="2099" required
+              class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+          <div>
+            <label class="block text-sm mb-1">Tipo de Artículo *</label>
+            <input type="text" id="tipoArticulo" placeholder="Ej. Sedán, Pickup, SUV" required
+              class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+          <div>
+            <label class="block text-sm mb-1">Marca *</label>
+            <input type="text" id="marca" required
+              class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+          <div>
+            <label class="block text-sm mb-1">Modelo *</label>
+            <input type="text" id="modelo" required
+              class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+          <div>
+            <label class="block text-sm mb-1">Motor *</label>
+            <input type="text" id="motor" placeholder="Ej. 2.5L, V6 3.5L" required
+              class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+          <div>
+            <label class="block text-sm mb-1">Transmisión *</label>
+            <select id="transmision" required class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="">Seleccione</option>
+              <option value="automatica">Automática</option>
+              <option value="manual">Manual</option>
+              <option value="cv">CVT</option>
+              <option value="semiautomatica">Semi-automática</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm mb-1">Tipo de Combustible *</label>
+            <select id="combustible" required class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="">Seleccione</option>
+              <option value="gasolina">Gasolina</option>
+              <option value="diesel">Diésel</option>
+              <option value="hibrido">Híbrido</option>
+              <option value="electrico">Eléctrico</option>
+              <option value="gnv">GNV</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm mb-1">Tren de Manejo *</label>
+            <select id="trenManejo" required class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="">Seleccione</option>
+              <option value="FWD">FWD</option>
+              <option value="RWD">RWD</option>
+              <option value="AWD">AWD</option>
+              <option value="4WD">4WD</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm mb-1">Número de Cilindros *</label>
+            <input type="text" id="cilindros" placeholder="Ej. 4, 6, 8" required
+              class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Estado de daño -->
+      <section class="bg-white rounded-2xl border p-6 shadow-sm">
+        <h2 class="font-semibold text-lg mb-4">2. Clasificación por Estado de Daño</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <label class="border rounded-lg p-4 flex items-start gap-3 cursor-pointer hover:bg-green-50 has-[:checked]:border-green-500 has-[:checked]:bg-green-50 transition">
+            <input type="radio" name="estadoDano" value="verde" required class="mt-1" />
+            <div>
+              <p class="font-medium text-green-700">🟢 Verde — Daño menor / Limpio</p>
+              <p class="text-xs text-gray-600 mt-1">Daños menores, reparables con facilidad.</p>
+            </div>
+          </label>
+          <label class="border rounded-lg p-4 flex items-start gap-3 cursor-pointer hover:bg-yellow-50 has-[:checked]:border-yellow-500 has-[:checked]:bg-yellow-50 transition">
+            <input type="radio" name="estadoDano" value="amarillo" required class="mt-1" />
+            <div>
+              <p class="font-medium text-yellow-700">🟡 Amarillo — Daño medio / Reparable</p>
+              <p class="text-xs text-gray-600 mt-1">Daños moderados, requiere reparación.</p>
+            </div>
+          </label>
+          <label class="border rounded-lg p-4 flex items-start gap-3 cursor-pointer hover:bg-red-50 has-[:checked]:border-red-500 has-[:checked]:bg-red-50 transition">
+            <input type="radio" name="estadoDano" value="rojo" required class="mt-1" />
+            <div>
+              <p class="font-medium text-red-700">🔴 Rojo — Daño severo / Salvamento</p>
+              <p class="text-xs text-gray-600 mt-1">Daños severos, condición de salvamento.</p>
+            </div>
+          </label>
+        </div>
+      </section>
+
+      <!-- Galería -->
+      <section class="bg-white rounded-2xl border p-6 shadow-sm">
+        <h2 class="font-semibold text-lg mb-4">3. Galería Fotográfica (mínimo 5)</h2>
+        <p class="text-sm text-gray-600 mb-2">Selecciona de 1 a 5 fotografías (JPG/PNG). Las imágenes se comprimen automáticamente.</p>
+        <input type="file" id="fotos" accept="image/jpeg,image/jpg,image/png" multiple
+          class="block w-full text-sm border rounded-lg px-3 py-2 file:mr-4 file:py-1.5 file:px-3 file:border-0 file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+        <div id="previewContainer" class="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3"></div>
+      </section>
+
+      <!-- Subasta -->
+      <section class="bg-white rounded-2xl border p-6 shadow-sm">
+        <h2 class="font-semibold text-lg mb-4">4. Parámetros de la Subasta</h2>
+        <div id="notaSubasta" class="hidden mb-3 text-sm bg-amber-50 text-amber-700 p-3 rounded-lg">
+          Los parámetros de subasta no se pueden modificar después de creados.
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label class="block text-sm mb-1">Precio / Monto Base (Q.) *</label>
+            <input type="number" id="precioBase" min="20000" step="1" required placeholder="20000"
+              class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <p class="text-xs text-gray-500 mt-1">Mínimo Q. 20,000</p>
+          </div>
+          <div>
+            <label class="block text-sm mb-1">Fecha y Hora de Inicio *</label>
+            <input type="datetime-local" id="horaInicio" required
+              class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+          <div>
+            <label class="block text-sm mb-1">Fecha y Hora de Cierre *</label>
+            <input type="datetime-local" id="horaFin" required
+              class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+        </div>
+      </section>
+
+      <div class="flex flex-col gap-2">
+        <p id="errorPublicar" class="text-red-600 text-sm"></p>
+        <p id="successPublicar" class="text-green-600 text-sm"></p>
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium text-lg">
+          Publicar Vehículo y Subasta
+        </button>
+      </div>
+    </form>
+  </main>
+
+  <script type="module" src="./js/auth.js"></script>
+  <script type="module" src="./js/vehiculos.js"></script>
+</body>
+</html>

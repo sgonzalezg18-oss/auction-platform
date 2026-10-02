@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro — Subastas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./css/estilos.css" />
+</head>
+<body>
+  <header class="bg-white border-b">
+    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center h-16">
+      <a href="index.html" class="text-xl font-bold text-blue-700">🚗 Subastas de Vehículos</a>
+      <a href="login.html" class="text-gray-700 hover:text-blue-700">Iniciar Sesión</a>
+    </div>
+  </header>
+
+  <main class="min-h-[70vh] flex items-center justify-center px-4 py-8">
+    <div class="bg-white w-full max-w-md rounded-2xl border shadow-sm p-8">
+      <h1 class="text-2xl font-bold text-center">Crear Cuenta</h1>
+      <p class="text-gray-500 text-center mt-1">Registro obligatorio para ofertar y publicar</p>
+      <form id="registroForm" class="mt-6 space-y-4">
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-sm mb-1">Nombre</label>
+            <input type="text" id="nombre" required autocomplete="given-name"
+              class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+          <div>
+            <label class="block text-sm mb-1">Apellido</label>
+            <input type="text" id="apellido" required autocomplete="family-name"
+              class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm mb-1">Teléfono</label>
+          <input type="tel" id="telefono" required placeholder="Ej. 5555-5555"
+            class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+        <div>
+          <label class="block text-sm mb-1">Correo electrónico</label>
+          <input type="email" id="emailRegistro" required autocomplete="email"
+            class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+        <div>
+          <label class="block text-sm mb-1">Contraseña</label>
+          <input type="password" id="passwordRegistro" minlength="6" required autocomplete="new-password"
+            class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <p class="text-xs text-gray-500 mt-1">Mínimo 6 caracteres</p>
+        </div>
+        <div>
+          <label class="block text-sm mb-1">Confirmar contraseña</label>
+          <input type="password" id="passwordRegistro2" minlength="6" required autocomplete="new-password"
+            class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+        <p id="registroError" class="text-red-600 text-sm"></p>
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-lg font-medium">
+          Registrarse
+        </button>
+      </form>
+      <p class="text-center text-sm mt-4 text-gray-600">
+        ¿Ya tienes cuenta? <a href="login.html" class="text-blue-700 underline">Inicia sesión</a>
+      </p>
+    </div>
+  </main>
+
+  <script type="module" src="./js/auth.js"></script>
+</body>
+</html>
